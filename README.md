@@ -23,9 +23,11 @@ Enter into terminal
 flutter pub get
 ```
 
+<p float="left">
 <img src="assets/images/scr1.jpeg" width="150">
 <img src="assets/images/scr2.jpeg" width="150">
 <img src="assets/images/scr3.jpeg" width="150">
+</p>
 
 
 
