@@ -23,7 +23,7 @@ class MyHeader extends StatelessWidget {
         padding: const EdgeInsets.only(left: 40, top: 50, right: 20),
         height: 350.0,
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
@@ -32,7 +32,7 @@ class MyHeader extends StatelessWidget {
               Color(0xFF11249F),
             ],
           ),
-          image: const DecorationImage(
+          image:  DecorationImage(
             image: AssetImage("assets/images/virus.png"),
           ),
         ),
@@ -79,7 +79,7 @@ class MyHeader extends StatelessWidget {
 class MyClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    var path = Path();
+    final path = Path();
     path.lineTo(0, size.height - 80);
     path.quadraticBezierTo(
         size.width / 2, size.height, size.width, size.height - 80);
