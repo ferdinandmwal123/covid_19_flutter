@@ -32,35 +32,35 @@ class InfoScreen extends StatelessWidget {
                   const SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const SymptomsCard(
+                    children: const[
+                       SymptomsCard(
                         image: 'assets/images/headache.png',
                         title: 'Headache',
                         isActive: true,
                       ),
-                      const SymptomsCard(
+                       SymptomsCard(
                         image: 'assets/images/cough.png',
                         title: 'Cough',
                       ),
-                      const SymptomsCard(
+                       SymptomsCard(
                         image: 'assets/images/fever.png',
                         title: 'Fever',
                       )
                     ],
                   ),
-                  SizedBox(height: 20,),
-                  Text(
+                  const SizedBox(height: 20,),
+                  const Text(
                     "Prevention",
                     style: kTitleTextstyle,
                   ),
-                  SizedBox(height: 20,),
-                  PreventCard(
+                  const SizedBox(height: 20,),
+                  const PreventCard(
                     text:
                         'Since the outbreak many people have embraced wearing masks',
                     image: 'assets/images/wear_mask.png',
                     title: 'Wear face mask',
                   ),
-                  PreventCard(
+                  const PreventCard(
                     text:
                         'Since the outbreak many people have embraced wearing masks',
                     image: 'assets/images/wash_hands.png',
@@ -147,25 +147,23 @@ class SymptomsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: Colors.white,
           boxShadow: [
-            isActive
-                ? BoxShadow(
-                    offset: Offset(0, 10),
+            if (isActive) BoxShadow(
+                    offset: const Offset(0, 10),
                     blurRadius: 20,
-                    color: kActiveShadowColor)
-                : BoxShadow(
-                    offset: Offset(0, 3), blurRadius: 6, color: kShadowColor)
+                    color: kActiveShadowColor) else BoxShadow(
+                    offset: const Offset(0, 3), blurRadius: 6, color: kShadowColor)
           ]),
       child: Column(
         children: [
           Image.asset(image),
           Text(
             title,
-            style: TextStyle(fontWeight: FontWeight.w600),
+            style: const TextStyle(fontWeight: FontWeight.w600),
           )
         ],
       ),
