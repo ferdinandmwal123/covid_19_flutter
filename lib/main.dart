@@ -37,13 +37,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Map worldData;
   fetchWorlData() async {
-    final http.Response response = await http.get('https://corona.lmao.ninja/v2/all');
+    final http.Response response =
+        await http.get(Uri.parse('https://corona.lmao.ninja/v2/all'));
     setState(() {
       worldData = json.decode(response.body) as Map;
     });
   }
-
- 
 
   @override
   void initState() {
@@ -144,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Counter(
                           color: kInfectedColor,
                           number: worldData == null
-                              ? const Text('Failed').toString()
+                              ? 'Failed'
                               : worldData['cases']
                                   .toString(), //remember api countries are + 15
                           title: 'Infected',
@@ -152,14 +151,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         Counter(
                           color: kDeathColor,
                           number: worldData == null
-                              ? const Text('Failed').toString()
+                              ? 'Failed'
                               : worldData['deaths'].toString(),
                           title: 'Deaths',
                         ),
                         Counter(
                           color: kRecovercolor,
                           number: worldData == null
-                              ? const Text('Failed').toString()
+                              ? 'Failed'
                               : worldData['recovered'].toString(),
                           title: 'Recovered',
                         )
@@ -168,12 +167,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const[
-                       Text(
+                    children: const [
+                      Text(
                         'Spread of virus',
                         style: kTitleTextstyle,
                       ),
-                       Text(
+                      Text(
                         'See details',
                         style: TextStyle(
                             color: kPrimaryColor, fontWeight: FontWeight.w600),
