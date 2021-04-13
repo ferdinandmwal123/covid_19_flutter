@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
-                              offset: Offset(0, 4),
+                              offset: const Offset(0, 4),
                               blurRadius: 30,
                               color: kShadowColor)
                         ]),
@@ -168,12 +168,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
+                    children: const[
+                       Text(
                         'Spread of virus',
                         style: kTitleTextstyle,
                       ),
-                      const Text(
+                       Text(
                         'See details',
                         style: TextStyle(
                             color: kPrimaryColor, fontWeight: FontWeight.w600),
