@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:covid_19/constant.dart';
 import 'package:covid_19/widgets/counter.dart';
 import 'package:covid_19/widgets/my_header.dart';
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
-import 'package:date_format/date_format.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,7 +37,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Map worldData;
   fetchWorlData() async {
-    http.Response response = await http.get('https://corona.lmao.ninja/v2/all');
+    final http.Response response = await http.get('https://corona.lmao.ninja/v2/all');
     setState(() {
       worldData = json.decode(response.body) as Map;
     });
@@ -55,41 +55,40 @@ class _HomeScreenState extends State<HomeScreen> {
   String dropDownValue = 'WorldWide';
   @override
   Widget build(BuildContext context) {
-    var today = formatDate(DateTime.now(), [M, ' ', d]);
+    final today = formatDate(DateTime.now(), [M, ' ', d]);
 
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            MyHeader(
+            const MyHeader(
               image: "assets/icons/Drcorona.svg",
               textTop: "Avoid crowds",
               textBottom: "stay at home.",
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               height: 60,
               width: double.infinity,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(25),
-                  border: Border.all(color: Color(0xFFE5E5E5))),
+                  border: Border.all(color: const Color(0xFFE5E5E5))),
               child: Row(
                 children: [
                   SvgPicture.asset('assets/icons/maps-and-flags.svg'),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   Expanded(
                       child: DropdownButton<String>(
                     value: dropDownValue,
                     isExpanded: true,
-                    underline: SizedBox(),
+                    underline: const SizedBox(),
                     icon: SvgPicture.asset('assets/icons/dropdown.svg'),
                     onChanged: (String newValue) {
                       setState(() {
                         dropDownValue = newValue;
                       });
-                      print(dropDownValue);
                     },
                     items: ['WorldWide', 'Kenya', 'USA', 'Japan']
                         .map<DropdownMenuItem<String>>((String value) {
@@ -102,9 +101,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
                   Row(
@@ -116,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: kTitleTextstyle),
                         TextSpan(
                             text: "Newest update $today",
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: kTextLightColor,
                             ))
                       ])),
